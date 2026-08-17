@@ -35,13 +35,13 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({ darkMode }) => {
   const getBotResponse = (message: string): string => {
     const msg = message.toLowerCase();
     if (msg.match(/agent|agents|digital worker|bot/)) {
-      return "🤖 We build 5 types of AI Agents:\n\n1️⃣ Customer Experience (from R1,850)\n2️⃣ Operations & Admin (from R2,450)\n3️⃣ Knowledge Base Brain (from R2,750)\n4️⃣ HR & Recruitment (from R2,450)\n5️⃣ Custom Agent (from R3,650)\n\nWhich agent type fits your operational workflow?";
+      return "🤖 We build 5 types of AI Agents:\n\n1️⃣ Customer Experience (from R3,850)\n2️⃣ Operations & Admin (from R4,450)\n3️⃣ Knowledge Base Brain (from R4,750)\n4️⃣ HR & Recruitment (from R4,450)\n5️⃣ Custom Agent (from R5,650)\n\nWhich agent type fits your operational workflow?";
     } else if (msg.match(/workflow|workflows|automation/)) {
-      return "⚙️ Intelligent Workflows:\n\n• Lead-to-Customer (from R3,200)\n• Invoice-to-Payment (from R3,800)\n• Support Ticket Auto-Routing (from R3,400)\n• Employee Onboarding (from R2,900)\n• System Integration (from R2,600)\n• Custom Workflow (from R3,900)";
+      return "⚙️ Intelligent Workflows:\n\n• Lead-to-Customer (from R4,800)\n• Invoice-to-Payment (from R5,800)\n• Support Ticket Auto-Routing (from R5,200)\n• Employee Onboarding (from R4,600)\n• System Integration (from R4,400)\n• Custom Workflow (from R5,900)";
     } else if (msg.match(/website|web|site|smart website/)) {
-      return "🌐 Smart Website Development:\n\n• Custom responsive, modern UX\n• AI-powered embedded chat agents\n• Automated lead generation capture\n• Fast load speeds & SEO optimized\n\nStarting from R2,450 — let's elevate your online business presence!";
+      return "🌐 Smart Website Development:\n\n• Custom responsive, modern UX\n• AI-powered embedded chat agents\n• Automated lead generation capture\n• Fast load speeds & SEO optimized\n\nStarting from R4,450 — let's elevate your online business presence!";
     } else if (msg.match(/price|cost|pricing|rate|quote/)) {
-      return "💰 Startup-Friendly Pricing Structure:\n\n• AI Scoping & Audit Blueprint: from R750\n• AI Agents: from R1,850\n• Custom Agent + Workflow: from R2,450\n• Workflows: from R2,600\n• Smart Websites: from R2,450\n• AI-as-a-Service Retainer: from R1,850/month";
+      return "💰 Startup-Friendly Pricing Structure:\n\n• AI Scoping & Audit Blueprint: from R2,500\n• AI Agents: from R3,850\n• Custom Agent + Workflow: from R4,850\n• Workflows: from R4,400\n• Smart Websites: from R4,450\n• AI-as-a-Service Retainer: from R3,850/month";
     } else if (msg.match(/lesedi|founder|about you|who are you/)) {
       return "🧠 Lesedi Tlhapane is an AI Technical Specialist based in Pretoria, currently selected for the prestigious 12-month eStudy AI Entrepreneurship Incubation Programme. He builds production-ready AI agents, workflows, and websites.";
     } else if (msg.match(/contact|reach|call|whatsapp|email|phone/)) {

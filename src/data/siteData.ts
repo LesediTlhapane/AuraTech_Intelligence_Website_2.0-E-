@@ -66,7 +66,7 @@ export const AI_AGENTS: AIAgent[] = [
     description: '24/7 intelligent support that answers complex queries, resolves issues, and books appointments autonomously.',
     icon: 'Headset',
     badge: 'Ready',
-    price: 'From R1,850',
+    price: 'From R3,850',
     tags: ['Multi-channel', 'Sentiment', 'Booking'],
   },
   {
@@ -75,7 +75,7 @@ export const AI_AGENTS: AIAgent[] = [
     description: 'Monitors emails, extracts data from PDFs/invoices, updates CRMs, and eliminates manual back-office errors.',
     icon: 'FileSpreadsheet',
     badge: 'Ready',
-    price: 'From R2,450',
+    price: 'From R4,450',
     tags: ['Email Parsing', 'Extraction', 'CRM'],
   },
   {
@@ -84,7 +84,7 @@ export const AI_AGENTS: AIAgent[] = [
     description: 'Train an AI on your manuals, compliance files, and company data. Your team gets instant answers from internal knowledge.',
     icon: 'Brain',
     badge: 'Ready',
-    price: 'From R2,750',
+    price: 'From R4,750',
     tags: ['Document Q&A', 'Policy', 'Search'],
   },
   {
@@ -93,7 +93,7 @@ export const AI_AGENTS: AIAgent[] = [
     description: 'Automates resume screening, interview scheduling, onboarding checklists, and employee queries.',
     icon: 'Users',
     badge: 'Ready',
-    price: 'From R2,450',
+    price: 'From R4,450',
     tags: ['Resume Parsing', 'Scheduling', 'Onboarding'],
   },
   {
@@ -102,7 +102,7 @@ export const AI_AGENTS: AIAgent[] = [
     description: 'A bespoke AI agent built specifically for your business need. We design it from the ground up to solve your unique challenge.',
     icon: 'Cpu',
     badge: 'Popular',
-    price: 'From R3,650',
+    price: 'From R5,650',
     tags: ['Fully Custom', 'Any Industry'],
     isPopular: true,
   },
@@ -124,7 +124,7 @@ export const WORKFLOWS: WorkflowItem[] = [
     description: 'Automatically capture leads, qualify them, send follow-ups, and update your CRM — all without human intervention.',
     icon: 'Filter',
     badge: 'End-to-End',
-    price: 'From R3,200',
+    price: 'From R4,800',
     tags: ['Lead Capture', 'CRM Sync'],
   },
   {
@@ -133,7 +133,7 @@ export const WORKFLOWS: WorkflowItem[] = [
     description: 'Incoming invoices are read by AI, validated against POs, routed for approval, and synced with accounting software.',
     icon: 'Receipt',
     badge: 'End-to-End',
-    price: 'From R3,800',
+    price: 'From R5,800',
     tags: ['Invoice Parsing', 'Approval'],
   },
   {
@@ -142,7 +142,7 @@ export const WORKFLOWS: WorkflowItem[] = [
     description: 'Customer support emails are read by AI, categorized, prioritized, and either resolved automatically or routed to the right human agent.',
     icon: 'Ticket',
     badge: 'End-to-End',
-    price: 'From R3,400',
+    price: 'From R5,200',
     tags: ['Classification', 'Auto-Resolution'],
   },
   {
@@ -151,7 +151,7 @@ export const WORKFLOWS: WorkflowItem[] = [
     description: 'New hires are automatically given access to systems, assigned training, and walked through onboarding checklists by an AI assistant.',
     icon: 'UserPlus',
     badge: 'End-to-End',
-    price: 'From R2,900',
+    price: 'From R4,600',
     tags: ['Access Provisioning', 'Training'],
   },
   {
@@ -160,7 +160,7 @@ export const WORKFLOWS: WorkflowItem[] = [
     description: 'We design and build an end-to-end automation for your specific business process. No workflow is too complex.',
     icon: 'GitBranch',
     badge: 'Popular',
-    price: 'From R3,900',
+    price: 'From R5,900',
     tags: ['Bespoke', 'Multi-System'],
     isPopular: true,
   },
@@ -170,7 +170,7 @@ export const WORKFLOWS: WorkflowItem[] = [
     description: 'Connect your existing tools (CRM, ERP, accounting, email) into a seamless automated workflow with AI at the center.',
     icon: 'RefreshCw',
     badge: 'Integration',
-    price: 'From R2,600',
+    price: 'From R4,400',
     tags: ['API', 'Data Sync'],
   },
 ];
@@ -181,7 +181,7 @@ export const SERVICES: ServiceItem[] = [
     category: 'Discovery',
     title: 'AI Scoping & Consultation',
     description: 'Comprehensive audit of your business processes. Delivers a 20+ page blueprint with ROI projections and proof-of-concept demo.',
-    price: 'From R750',
+    price: 'From R2,500',
     categoryColor: 'purple',
     icon: 'Search',
   },
@@ -190,7 +190,7 @@ export const SERVICES: ServiceItem[] = [
     category: 'Discovery',
     title: 'Data Preparation',
     description: 'Clean, structure, and prepare your data for AI applications. Many AI projects fail because of "dirty" data.',
-    price: 'From R1,200',
+    price: 'From R2,800',
     categoryColor: 'purple',
     icon: 'Layers',
   },
@@ -199,7 +199,7 @@ export const SERVICES: ServiceItem[] = [
     category: 'Discovery',
     title: 'AI Upskilling Workshops',
     description: 'Half-day or full-day sessions teaching your team how to use AI tools effectively in their specific roles.',
-    price: 'From R1,250/session',
+    price: 'From R2,850/session',
     categoryColor: 'purple',
     icon: 'GraduationCap',
   },
@@ -208,7 +208,7 @@ export const SERVICES: ServiceItem[] = [
     category: 'AI Agents',
     title: 'Custom AI Agent Build',
     description: 'Build a specific "Digital Worker" for your business: Customer Experience, Operations & Admin, Knowledge Base, or HR.',
-    price: 'From R1,850',
+    price: 'From R3,850',
     categoryColor: 'cyan',
     icon: 'Bot',
   },
@@ -217,7 +217,7 @@ export const SERVICES: ServiceItem[] = [
     category: 'Workflows',
     title: 'End-to-End Automation',
     description: 'Complete workflow automation—from lead capture to CRM update, from invoice to payment, from ticket to resolution.',
-    price: 'Custom Quote (from R2,900)',
+    price: 'Custom Quote (from R4,800)',
     categoryColor: 'pink',
     icon: 'Workflow',
   },
@@ -226,7 +226,7 @@ export const SERVICES: ServiceItem[] = [
     category: 'Web',
     title: 'Smart Website Development',
     description: 'Custom, responsive websites with modern design, AI-powered features, lead generation, and seamless user experience.',
-    price: 'From R2,450',
+    price: 'From R4,450',
     categoryColor: 'emerald',
     icon: 'Globe',
   },
@@ -235,7 +235,7 @@ export const SERVICES: ServiceItem[] = [
     category: 'Scale',
     title: 'AI-as-a-Service Retainer',
     description: 'Dedicated AI specialist, continuous optimization, priority feature development, and SLA-backed support.',
-    price: 'From R1,850/mo',
+    price: 'From R3,850/mo',
     categoryColor: 'amber',
     icon: 'Handshake',
   },
@@ -339,7 +339,7 @@ export const PRICING_PLANS: PricingPlan[] = [
   {
     id: 'scoping',
     title: 'AI Scoping & Consultation',
-    price: 'From R750',
+    price: 'From R2,500',
     features: [
       'Audit current business processes',
       'Identify immediate automation ROI',
@@ -351,7 +351,7 @@ export const PRICING_PLANS: PricingPlan[] = [
   {
     id: 'custom-package',
     title: 'Custom Agent + Workflow',
-    price: 'From R2,450',
+    price: 'From R4,850',
     popular: true,
     features: [
       'Custom AI agent development',
@@ -364,7 +364,7 @@ export const PRICING_PLANS: PricingPlan[] = [
   {
     id: 'retainer-plan',
     title: 'AI-as-a-Service Retainer',
-    price: 'From R1,850/mo',
+    price: 'From R3,850/mo',
     features: [
       'Dedicated AI specialist partner',
       'Continuous model optimization',
@@ -419,6 +419,6 @@ export const FAQ_LIST: FAQItem[] = [
   {
     id: 'faq-9',
     question: "Do you build websites too?",
-    answer: "Yes! We build modern, high-converting 'Smart Websites' equipped with built-in AI chat agents, lead capture workflows, fast loading speeds, and responsive design starting from R2,450.",
+    answer: "Yes! We build modern, high-converting 'Smart Websites' equipped with built-in AI chat agents, lead capture workflows, fast loading speeds, and responsive design starting from R4,450.",
   },
 ];
