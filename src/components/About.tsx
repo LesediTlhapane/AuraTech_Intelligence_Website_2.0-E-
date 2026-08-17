@@ -21,7 +21,7 @@ export const About: React.FC<AboutProps> = ({ darkMode }) => {
               <div className="absolute -inset-2 bg-gradient-to-r from-cyan-400 to-[#6A4FD9] rounded-full blur-lg opacity-40 group-hover:opacity-75 transition duration-500"></div>
               <div className="relative w-56 h-56 sm:w-64 sm:h-64 rounded-full overflow-hidden border-4 border-cyan-400/80 shadow-2xl bg-slate-800">
                 <img
-                  src="/Lesedi.png"
+                  src="/Lesed(2).png"
                   alt="Lesedi Tlhapane"
                   className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   onError={(e) => {
