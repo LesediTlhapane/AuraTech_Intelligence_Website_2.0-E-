@@ -56,6 +56,9 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
   const { displayed, done } = useTypewriter("we'd love to\nhear from you!", 35, 500);
 
   // Preload all 97 frames into memory for ZERO-latency 60fps/120fps scrubbing
+  // If frames are missing locally, auto-fallback to video canvas scrubbing
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
   useEffect(() => {
     const images: HTMLImageElement[] = [];
     loadedCountRef.current = 0;
@@ -70,6 +73,22 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
       images.push(img);
     }
     imagesRef.current = images;
+
+    // Prepare video element for instant dynamic fallback
+    const video = document.createElement('video');
+    video.src = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260601_110537_3a579fa0-7bbc-4d94-9d25-0e816c7840f5.mp4';
+    video.crossOrigin = 'anonymous';
+    video.muted = true;
+    video.playsInline = true;
+    video.preload = 'auto';
+    video.load();
+    videoRef.current = video;
+
+    return () => {
+      video.pause();
+      video.removeAttribute('src');
+      video.load();
+    };
   }, []);
 
   // Zero-Latency High-Performance Canvas Render Loop
@@ -105,13 +124,16 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
 
       // Select frame mapped directly to horizontal cursor position
       const frameIdx = Math.max(0, Math.min(TOTAL_FRAMES - 1, Math.round(curX * (TOTAL_FRAMES - 1))));
-      // Try active frame, fallback to frame 48 (center resting face), or frame 0
       const img = imagesRef.current[frameIdx] || imagesRef.current[48] || imagesRef.current[0];
 
       const width = canvas.width;
       const height = canvas.height;
 
-      if (img && img.complete && img.naturalWidth > 0 && width > 0 && height > 0) {
+      // Check if image frames are available, otherwise use video stream fallback
+      const hasLoadedImages = loadedCountRef.current > 10;
+      const video = videoRef.current;
+
+      if (hasLoadedImages && img && img.complete && img.naturalWidth > 0 && width > 0 && height > 0) {
         // Clear canvas
         ctx.fillStyle = '#020617';
         ctx.fillRect(0, 0, width, height);
@@ -133,6 +155,34 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
         const offsetY = (height * 0.44) - (renderH * 0.40) + shiftY;
 
         ctx.drawImage(img, offsetX, offsetY, renderW, renderH);
+      } else if (video && video.readyState >= 2 && width > 0 && height > 0) {
+        // Fallback: Seek video time to current cursor position
+        if (video.duration) {
+          const targetTime = Math.min(video.duration - 0.05, Math.max(0, curX * video.duration));
+          if (Math.abs(video.currentTime - targetTime) > 0.04) {
+            video.currentTime = targetTime;
+          }
+        }
+
+        ctx.fillStyle = '#020617';
+        ctx.fillRect(0, 0, width, height);
+
+        const vWidth = video.videoWidth || 960;
+        const vHeight = video.videoHeight || 540;
+        const scale = Math.max(
+          width / (vWidth * 0.55),
+          height / (vHeight * 0.90)
+        );
+        const renderW = vWidth * scale;
+        const renderH = vHeight * scale;
+
+        const shiftX = (curX - 0.5) * 32;
+        const shiftY = (curY - 0.5) * 22;
+
+        const offsetX = (width * 0.5) - (renderW * 0.705) + shiftX;
+        const offsetY = (height * 0.44) - (renderH * 0.40) + shiftY;
+
+        ctx.drawImage(video, offsetX, offsetY, renderW, renderH);
       }
 
       animId = requestAnimationFrame(renderLoop);
