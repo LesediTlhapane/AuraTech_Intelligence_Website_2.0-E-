@@ -10,6 +10,9 @@ import {
   Check,
   Sparkles,
   Compass,
+  Briefcase,
+  Sliders,
+  Layers,
 } from 'lucide-react';
 import { useTypewriter } from '../hooks/useTypewriter';
 
@@ -37,13 +40,13 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
   });
 
   // Multi-select service pills state
-  const [selectedServices, setSelectedServices] = useState<string[]>(['AI Agents']);
+  const [selectedServices, setSelectedServices] = useState<string[]>(['Autonomous AI Agents']);
 
   const serviceOptions = [
-    { id: 'AI Agents', label: 'AI Agents' },
-    { id: 'Workflows', label: 'Workflows' },
-    { id: 'Smart Web', label: 'Smart Web' },
-    { id: 'AI Retainer', label: 'AI Retainer' },
+    { id: 'Autonomous AI Agents', label: 'Autonomous AI Agents' },
+    { id: 'Intelligent Workflows', label: 'Intelligent Workflows' },
+    { id: 'Knowledge Base Brain', label: 'Knowledge Base Brain' },
+    { id: 'AI Scoping Blueprint', label: 'AI Scoping Blueprint' },
   ];
 
   const toggleService = (service: string) => {
@@ -56,7 +59,6 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
   const { displayed, done } = useTypewriter("we'd love to\nhear from you!", 35, 500);
 
   // Preload all 97 frames into memory for ZERO-latency 60fps/120fps scrubbing
-  // If frames are missing locally, auto-fallback to video canvas scrubbing
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
@@ -99,14 +101,12 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
     const ctx = canvas.getContext('2d', { alpha: false });
     if (!ctx) return;
 
-    // Mobile auto-wander animation phase
     let autoPhase = 0;
 
     const renderLoop = () => {
       const isMobile = window.innerWidth < 1024;
 
       if (isMobile) {
-        // Smooth ambient breathing and gazing cycle for mobile screens
         autoPhase += 0.02;
         targetCoordsRef.current = {
           x: 0.5 + Math.sin(autoPhase) * 0.35,
@@ -114,7 +114,6 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
         };
       }
 
-      // Snappy, silky smooth interpolation (0.24 factor ensures instant zero-lag feel)
       const lerpSpeed = 0.24;
       currentCoordsRef.current.x += (targetCoordsRef.current.x - currentCoordsRef.current.x) * lerpSpeed;
       currentCoordsRef.current.y += (targetCoordsRef.current.y - currentCoordsRef.current.y) * lerpSpeed;
@@ -122,23 +121,19 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
       const curX = currentCoordsRef.current.x;
       const curY = currentCoordsRef.current.y;
 
-      // Select frame mapped directly to horizontal cursor position
       const frameIdx = Math.max(0, Math.min(TOTAL_FRAMES - 1, Math.round(curX * (TOTAL_FRAMES - 1))));
       const img = imagesRef.current[frameIdx] || imagesRef.current[48] || imagesRef.current[0];
 
       const width = canvas.width;
       const height = canvas.height;
 
-      // Check if image frames are available, otherwise use video stream fallback
       const hasLoadedImages = loadedCountRef.current > 10;
       const video = videoRef.current;
 
       if (hasLoadedImages && img && img.complete && img.naturalWidth > 0 && width > 0 && height > 0) {
-        // Clear canvas
         ctx.fillStyle = '#020617';
         ctx.fillRect(0, 0, width, height);
 
-        // Calculate scaling ensuring full container fill and centered face framing
         const scale = Math.max(
           width / (img.naturalWidth * 0.55),
           height / (img.naturalHeight * 0.90)
@@ -146,17 +141,14 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
         const renderW = img.naturalWidth * scale;
         const renderH = img.naturalHeight * scale;
 
-        // 2D Parallax offset: face shifts in the direction of the mouse
         const shiftX = (curX - 0.5) * 32;
         const shiftY = (curY - 0.5) * 22;
 
-        // Anchor face center (70.5% horizontal, 40% vertical in source) directly to canvas center
         const offsetX = (width * 0.5) - (renderW * 0.705) + shiftX;
         const offsetY = (height * 0.44) - (renderH * 0.40) + shiftY;
 
         ctx.drawImage(img, offsetX, offsetY, renderW, renderH);
       } else if (video && video.readyState >= 2 && width > 0 && height > 0) {
-        // Fallback: Seek video time to current cursor position
         if (video.duration) {
           const targetTime = Math.min(video.duration - 0.05, Math.max(0, curX * video.duration));
           if (Math.abs(video.currentTime - targetTime) > 0.04) {
@@ -188,7 +180,6 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
       animId = requestAnimationFrame(renderLoop);
     };
 
-    // Canvas resize handling with Device Pixel Ratio for crystal clear sharpness
     const updateCanvasSize = () => {
       if (!canvas || !cardRef.current) return;
       const rect = cardRef.current.getBoundingClientRect();
@@ -208,7 +199,6 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
     };
   }, []);
 
-  // Card Mouse Move Handler — Instantaneous cursor tracking inside the box
   const handleCardMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
@@ -225,14 +215,12 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
     });
   }, []);
 
-  // Mouse leave — Smoothly return face to center forward-facing pose
   const handleCardMouseLeave = useCallback(() => {
     targetCoordsRef.current = { x: 0.5, y: 0.5 };
     isHoveredRef.current = false;
     setHudState((prev) => ({ ...prev, active: false }));
   }, []);
 
-  // Global window mouse move for wide screen tracking when not hovering directly
   useEffect(() => {
     const handleGlobalMouseMove = (e: MouseEvent) => {
       if (window.innerWidth < 1024 || isHoveredRef.current) return;
@@ -242,7 +230,6 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
       const cardCenterX = rect.left + rect.width / 2;
       const cardCenterY = rect.top + rect.height / 2;
 
-      // Calculate directional vector from box center to cursor
       const dx = (e.clientX - cardCenterX) / (window.innerWidth * 0.7);
       const dy = (e.clientY - cardCenterY) / (window.innerHeight * 0.7);
 
@@ -265,7 +252,7 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
         darkMode ? 'bg-[#0b1120]' : 'bg-white'
       }`}
     >
-      {/* Background image subtle backdrop */}
+      {/* Background subtle texture */}
       <div
         className="absolute inset-0 pointer-events-none z-0 bg-cover bg-center bg-no-repeat transition-opacity duration-300"
         style={{
@@ -274,7 +261,7 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
         }}
       />
 
-      {/* Background ambient lighting */}
+      {/* Background ambient radial lighting */}
       <div
         className={`absolute inset-0 pointer-events-none z-0 ${
           darkMode
@@ -305,7 +292,7 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
                     darkMode ? 'text-cyan-300' : 'text-cyan-800'
                   }`}
                 >
-                  eStudy AI Incubation — Current Cohort
+                  eStudy AI Incubation Fellowship
                 </span>
               </div>
               <span className="text-xs px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400 font-mono">
@@ -316,10 +303,10 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] mb-5">
               <span className={darkMode ? 'text-white' : 'text-slate-900'}>
-                AI Agents &{' '}
+                Turn Business Bottlenecks Into{' '}
               </span>
               <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-[#6A4FD9] bg-clip-text text-transparent">
-                Intelligent Workflows.
+                Intelligent Systems.
               </span>
             </h1>
 
@@ -329,9 +316,7 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
                 darkMode ? 'text-slate-300' : 'text-slate-600'
               }`}
             >
-              Deploy autonomous digital workers and end-to-end automation that operate 24/7 —
-              from customer support to back-office processes. Built for African businesses by a
-              Pretoria-based AI specialist.
+              Aura Tech Intelligence audits operations, designs specialized AI agents, and deploys intelligent workflow automation that reduces manual friction and drives measurable business growth.
             </p>
 
             {/* Action Buttons */}
@@ -339,15 +324,15 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
               <a
                 href="#contact"
                 id="hero-free-audit-btn"
-                className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-[#6A4FD9] to-[#5840b8] hover:from-[#7b61eb] hover:to-[#6A4FD9] transition-all shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:-translate-y-0.5 text-sm sm:text-base"
+                className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-bold text-white bg-gradient-to-r from-[#6A4FD9] to-[#16C5D8] hover:opacity-95 transition-all shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 hover:-translate-y-0.5 text-sm sm:text-base"
               >
-                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-300" />
-                <span>Free AI Audit Blueprint</span>
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-200" />
+                <span>Book an AI Strategy Session</span>
                 <ArrowRight className="w-4 h-4 ml-1" />
               </a>
 
               <a
-                href="#agents"
+                href="#solutions"
                 id="hero-explore-agents-btn"
                 className={`inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold border transition-all hover:-translate-y-0.5 text-sm sm:text-base ${
                   darkMode
@@ -355,8 +340,8 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
                     : 'border-slate-300 text-slate-800 bg-white hover:bg-slate-50 shadow-sm'
                 }`}
               >
-                <span>Explore AI Agents</span>
-                <Bot className="w-4 h-4 text-cyan-400" />
+                <span>Explore Solutions</span>
+                <Sliders className="w-4 h-4 text-cyan-400" />
               </a>
             </div>
 
@@ -364,7 +349,7 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
             <div className="pt-2 pb-4">
               <div className="flex items-center justify-between mb-2">
                 <span className={`text-sm font-semibold tracking-tight ${darkMode ? 'text-white' : 'text-slate-900'}`}>
-                  What sort of service?
+                  What operational capability do you need?
                 </span>
                 <span className="text-xs text-slate-400">Select all that apply</span>
               </div>
@@ -412,7 +397,7 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
                     exit={{ opacity: 0 }}
                     className="text-xs italic text-slate-400 py-1"
                   >
-                    Please click to select services above.
+                    Please click to select capabilities above.
                   </motion.p>
                 ) : (
                   <motion.div
@@ -428,7 +413,7 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
                     }`}
                   >
                     <span className="truncate">
-                      Ready to inquire about:{' '}
+                      Selected scope:{' '}
                       <strong className="text-cyan-400 font-semibold">
                         {selectedServices.join(', ')}
                       </strong>
@@ -437,7 +422,7 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
                       href="#contact"
                       className="shrink-0 text-[#4D6D47] dark:text-emerald-400 uppercase text-xs font-bold hover:underline flex items-center gap-1"
                     >
-                      <span>Let's Go</span>
+                      <span>Inquire Now</span>
                       <ArrowRight className="w-3 h-3" />
                     </a>
                   </motion.div>
@@ -445,33 +430,33 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
               </AnimatePresence>
             </div>
 
-            {/* Feature Highlights Grid */}
+            {/* Enterprise Value Metrics Highlights */}
             <div className="mt-4 pt-6 border-t border-slate-700/20 grid grid-cols-2 sm:grid-cols-4 gap-3.5 text-xs font-medium">
               <div className="flex items-center gap-2">
                 <Bot className="w-4 h-4 text-cyan-400 shrink-0" />
                 <span className={darkMode ? 'text-slate-300' : 'text-slate-700'}>
-                  Autonomous AI Agents
+                  6-Stage Method
                 </span>
               </div>
 
               <div className="flex items-center gap-2">
                 <Workflow className="w-4 h-4 text-pink-400 shrink-0" />
                 <span className={darkMode ? 'text-slate-300' : 'text-slate-700'}>
-                  Workflow Automation
+                  Integration-First
                 </span>
               </div>
 
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span className={darkMode ? 'text-slate-300' : 'text-slate-700'}>
-                  Enterprise-Grade Security
+                  Enterprise POPIA Safe
                 </span>
               </div>
 
               <div className="flex items-center gap-2">
                 <TrendingUp className="w-4 h-4 text-amber-400 shrink-0" />
                 <span className={darkMode ? 'text-slate-300' : 'text-slate-700'}>
-                  Tailored for Africa
+                  100% IP Ownership
                 </span>
               </div>
             </div>

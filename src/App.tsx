@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { About } from './components/About';
-import { AiAgents } from './components/AiAgents';
-import { Workflows } from './components/Workflows';
-import { Services } from './components/Services';
-import { Portfolio } from './components/Portfolio';
+import { BusinessProblems } from './components/BusinessProblems';
+import { Solutions } from './components/Solutions';
+import { Methodology } from './components/Methodology';
+import { Industries } from './components/Industries';
+import { CaseStudies } from './components/CaseStudies';
+import { WhyAura } from './components/WhyAura';
+import { AiAssessment } from './components/AiAssessment';
 import { Pricing } from './components/Pricing';
+import { About } from './components/About';
 import { FAQ } from './components/FAQ';
 import { Contact } from './components/Contact';
 import { ChatWidget } from './components/ChatWidget';
@@ -28,28 +31,34 @@ export default function App() {
   }, [darkMode]);
 
   return (
-    <div className={`min-h-screen font-sans antialiased selection:bg-cyan-500 selection:text-slate-950 ${darkMode ? 'bg-[#0b1120] text-slate-100' : 'bg-slate-50 text-slate-900'}`}>
+    <div
+      className={`min-h-screen font-sans antialiased selection:bg-cyan-500 selection:text-slate-950 ${
+        darkMode ? 'bg-[#0b1120] text-slate-100' : 'bg-slate-50 text-slate-900'
+      }`}
+    >
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
       <main>
         <Hero darkMode={darkMode} />
-        
-        {/* Sections container with low-opacity background graphic */}
+
+        {/* Global sections container with subtle background graphic */}
         <div className="relative">
-          {/* Background image container for all subsequent sections */}
           <div
             className="absolute inset-0 pointer-events-none z-0 bg-cover bg-center bg-fixed bg-no-repeat transition-opacity duration-300"
             style={{
               backgroundImage: `url('/home.png')`,
-              opacity: darkMode ? 0.18 : 0.24,
+              opacity: darkMode ? 0.16 : 0.22,
             }}
           />
           <div className="relative z-10">
-            <About darkMode={darkMode} />
-            <AiAgents darkMode={darkMode} />
-            <Workflows darkMode={darkMode} />
-            <Services darkMode={darkMode} />
-            <Portfolio darkMode={darkMode} />
+            <BusinessProblems darkMode={darkMode} />
+            <Solutions darkMode={darkMode} />
+            <Methodology darkMode={darkMode} />
+            <Industries darkMode={darkMode} />
+            <CaseStudies darkMode={darkMode} />
+            <WhyAura darkMode={darkMode} />
+            <AiAssessment darkMode={darkMode} />
             <Pricing darkMode={darkMode} />
+            <About darkMode={darkMode} />
             <FAQ darkMode={darkMode} />
             <Contact darkMode={darkMode} />
           </div>
