@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, GraduationCap, Phone, Mail, Linkedin, Award, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { MapPin, GraduationCap, Phone, Mail, Linkedin, CheckCircle2 } from 'lucide-react';
 
 interface AboutProps {
   darkMode: boolean;
@@ -73,10 +73,10 @@ export const About: React.FC<AboutProps> = ({ darkMode }) => {
             >
               <p className="text-sm sm:text-base leading-relaxed">
                 Aura Tech Intelligence was founded by <strong className={darkMode ? 'text-white' : 'text-slate-900'}>Lesedi Tlhapane</strong> through the sponsored{' '}
-                <strong className={darkMode ? 'text-white' : 'text-slate-900'}>eStudy AI Entrepreneurship Incubation Programme</strong> — a prestigious South African initiative supporting high-potential engineering founders in building production-ready AI systems.
+                <strong className={darkMode ? 'text-white' : 'text-slate-900'}>eStudy AI Entrepreneurship Incubation Programme</strong> — a South African programme through which Aura was developed.
               </p>
               <p className="text-sm sm:text-base leading-relaxed">
-                Rather than treating AI as a speculative buzzword or pushing generic templates, we partner directly with business owners, operational directors, and technical teams to identify exact workflow friction points, architect bespoke agent pipelines, and deliver measurable business efficiency.
+                Lesedi works directly with business owners and operational teams to understand workflow friction, prototype useful systems, and engineer practical AI and automation around the tools a business already uses.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
@@ -86,11 +86,11 @@ export const About: React.FC<AboutProps> = ({ darkMode }) => {
                 </div>
                 <div className="flex items-center gap-2 text-xs">
                   <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
-                  <span>Strict POPIA Compliance & Privacy</span>
+                  <span>POPIA-Conscious Privacy Design</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs">
                   <CheckCircle2 className="w-4 h-4 text-purple-400 shrink-0" />
-                  <span>Production-Grade Integration</span>
+                  <span>Integration-Focused Engineering</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs">
                   <CheckCircle2 className="w-4 h-4 text-purple-400 shrink-0" />

@@ -43,7 +43,7 @@ export const ChatWidget: React.FC<ChatWidgetProps> = ({ darkMode }) => {
     } else if (msg.match(/price|cost|pricing|rate|quote/)) {
       return "💰 Startup-Friendly Pricing Structure:\n\n• AI Scoping & Audit Blueprint: from R2,500\n• AI Agents: from R3,850\n• Custom Agent + Workflow: from R4,850\n• Workflows: from R4,400\n• Smart Websites: from R4,450\n• AI-as-a-Service Retainer: from R3,850/month";
     } else if (msg.match(/lesedi|founder|about you|who are you/)) {
-      return "🧠 Lesedi Tlhapane is an AI Technical Specialist based in Pretoria, currently selected for the prestigious 12-month eStudy AI Entrepreneurship Incubation Programme. He builds production-ready AI agents, workflows, and websites.";
+      return "🧠 Lesedi Tlhapane is an AI Technical Specialist based in Pretoria. Through Aura, he builds practical AI agents, workflows, and business applications around real operational needs.";
     } else if (msg.match(/contact|reach|call|whatsapp|email|phone/)) {
       return "📬 You can reach Lesedi directly:\n\n• WhatsApp/Call: 084-833-7335\n• Email: auratechintel@outlook.com\n• LinkedIn: linkedin.com/in/lesedi-tlhapane-0309b826b";
     } else if (msg.match(/portfolio|projects|github|demo/)) {

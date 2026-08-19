@@ -316,7 +316,7 @@ export const Hero: React.FC<HeroProps> = ({ darkMode }) => {
                 darkMode ? 'text-slate-300' : 'text-slate-600'
               }`}
             >
-              Aura Tech Intelligence audits operations, designs specialized AI agents, and deploys intelligent workflow automation that reduces manual friction and drives measurable business growth.
+              Aura Tech Intelligence audits operations, designs specialized AI agents, and deploys intelligent workflow automation around the way your team actually works.
             </p>
 
             {/* Action Buttons */}

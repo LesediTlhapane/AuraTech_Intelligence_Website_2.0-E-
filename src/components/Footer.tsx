@@ -44,7 +44,7 @@ export const Footer: React.FC<FooterProps> = ({ darkMode }) => {
 
             <p className="text-xs leading-relaxed max-w-sm">
               We help businesses identify operational bottlenecks, design autonomous AI agents,
-              and deploy multi-tier workflow automation that reduces manual friction and drives measurable growth.
+              and deploy practical AI and workflow automation around real operational needs.
             </p>
 
             <div className="flex items-center gap-3 pt-2">
@@ -140,7 +140,7 @@ export const Footer: React.FC<FooterProps> = ({ darkMode }) => {
 
           <div className="flex items-center gap-2 text-cyan-400 font-medium">
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>eStudy AI Incubation Fellowship • POPIA Compliant Architecture</span>
+            <span>eStudy AI Incubation Programme • POPIA-conscious design</span>
           </div>
 
           <button

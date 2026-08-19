@@ -105,7 +105,7 @@ export const WhyAura: React.FC<WhyAuraProps> = ({ darkMode }) => {
                 darkMode ? 'border-slate-800 text-cyan-400' : 'border-slate-100 text-purple-700'
               }`}>
                 <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
-                <span>Enterprise Standard</span>
+                <span>Applied in project work</span>
               </div>
             </div>
           ))}

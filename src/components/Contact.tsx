@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, Linkedin, MapPin, Send, CheckCircle2, AlertCircle, Quote, ShieldCheck, Clock, Calendar } from 'lucide-react';
+import { Phone, Mail, Linkedin, MapPin, Send, CheckCircle2, AlertCircle, ShieldCheck, Clock, Calendar } from 'lucide-react';
 
 interface ContactProps {
   darkMode: boolean;
@@ -174,21 +174,21 @@ ${formData.message}`
               </div>
             </div>
 
-            {/* Client Testimonial & Assurance */}
+            {/* Evidence and assurance */}
             <div
               className={`rounded-2xl p-6 border relative overflow-hidden ${
                 darkMode ? 'bg-[#162033]/60 border-slate-800' : 'bg-slate-100 border-slate-200'
               }`}
             >
-              <Quote className="w-8 h-8 text-cyan-500/20 absolute -top-1 -right-1" />
-              <p className={`italic text-xs sm:text-sm leading-relaxed mb-3 ${
+              <ShieldCheck className="w-8 h-8 text-cyan-500/20 absolute -top-1 -right-1" />
+              <p className={`text-xs sm:text-sm leading-relaxed mb-3 ${
                 darkMode ? 'text-slate-300' : 'text-slate-700'
               }`}>
-                "Lesedi engineered a custom autonomous agent that triages client inquiries 24/7.
-                Response latency dropped to seconds and our administrative workload decreased significantly."
+                Start with the business problem. Aura will help assess the workflow, explain the
+                proposed technology, and identify where human oversight belongs before any build begins.
               </p>
               <span className="text-xs font-semibold text-cyan-400 block">
-                — Verified Operational Client
+                Transparent scoping process
               </span>
             </div>
 
@@ -197,7 +197,7 @@ ${formData.message}`
               darkMode ? 'bg-slate-900/60 border-slate-800 text-slate-400' : 'bg-slate-50 border-slate-200 text-slate-600'
             }`}>
               <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0" />
-              <span>All consultations & workflow data held under strict confidentiality & POPIA compliance standards.</span>
+              <span>Consultations and workflow data are handled confidentially with privacy requirements considered from the outset.</span>
             </div>
           </div>
 
@@ -224,12 +224,12 @@ ${formData.message}`
                     <label className={`block text-xs font-semibold mb-1.5 ${
                       darkMode ? 'text-slate-300' : 'text-slate-700'
                     }`}>
-                      Full Name *
+                      Full Name & Surname *
                     </label>
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Sipho Ndlovu"
+                      placeholder="Steve Mokoena"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className={`w-full px-4 py-3 text-xs sm:text-sm rounded-xl border outline-none transition-colors ${
@@ -249,7 +249,7 @@ ${formData.message}`
                     <input
                       type="email"
                       required
-                      placeholder="sipho@company.co.za"
+                      placeholder="mokoenasteve@company.co.za"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className={`w-full px-4 py-3 text-xs sm:text-sm rounded-xl border outline-none transition-colors ${

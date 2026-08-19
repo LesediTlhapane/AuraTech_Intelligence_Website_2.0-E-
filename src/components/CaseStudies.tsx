@@ -43,7 +43,7 @@ export const CaseStudies: React.FC<CaseStudiesProps> = ({ darkMode }) => {
       item.solution.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.techStack.some((t) => t.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesFilter && matchesSearch;
-  });
+  }).sort((first, second) => Number(Boolean(second.isFeatured)) - Number(Boolean(first.isFeatured)));
 
   const getStatusBadgeStyle = (badge: string) => {
     switch (badge) {
@@ -97,9 +97,25 @@ export const CaseStudies: React.FC<CaseStudiesProps> = ({ darkMode }) => {
           <p className={`mt-4 max-w-2xl mx-auto text-base sm:text-lg ${
             darkMode ? 'text-slate-400' : 'text-slate-600'
           }`}>
-            Explore our verified portfolio of autonomous AI workers, end-to-end multi-tier workflows,
-            and specialized business platforms engineered for commercial deployment.
+            Explore selected projects that show how Aura turns operational problems into AI-assisted
+            workflows, intelligent agents, compliance tools, and business applications.
           </p>
+
+          <div className="mt-7 flex flex-wrap justify-center gap-2.5 text-xs font-semibold">
+            {['AI systems', 'Automation workflows', 'Business applications', 'Industry-specific tools'].map((proofPoint) => (
+              <span
+                key={proofPoint}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border ${
+                  darkMode
+                    ? 'bg-slate-900/60 border-slate-700 text-slate-300'
+                    : 'bg-white/80 border-slate-200 text-slate-700'
+                }`}
+              >
+                <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400" />
+                {proofPoint}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Filter Bar & Search */}
@@ -173,7 +189,7 @@ export const CaseStudies: React.FC<CaseStudiesProps> = ({ darkMode }) => {
                   </span>
                 </div>
 
-                {/* Structured Breakdown: Challenge -> Solution -> Intelligence */}
+                {/* Structured Breakdown: Problem -> Solution -> Approach -> Capability */}
                 <div className="space-y-3.5 mb-6 text-xs sm:text-sm">
                   <div>
                     <span className="font-semibold text-rose-400 block text-[11px] uppercase tracking-wider mb-0.5">
@@ -197,10 +213,19 @@ export const CaseStudies: React.FC<CaseStudiesProps> = ({ darkMode }) => {
                     darkMode ? 'bg-slate-900/60 border border-slate-800 text-slate-300' : 'bg-slate-50 border border-slate-200 text-slate-700'
                   }`}>
                     <span className="font-semibold text-purple-400 block text-[11px] uppercase tracking-wider mb-0.5">
-                      AI Architecture & Logic:
+                      Technology & Approach:
                     </span>
                     <p className="leading-relaxed text-xs">
                       {item.intelligence}
+                    </p>
+                  </div>
+
+                  <div>
+                    <span className="font-semibold text-amber-400 block text-[11px] uppercase tracking-wider mb-0.5">
+                      Capability Demonstrated:
+                    </span>
+                    <p className={`leading-relaxed ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+                      {item.result}
                     </p>
                   </div>
                 </div>
@@ -251,7 +276,7 @@ export const CaseStudies: React.FC<CaseStudiesProps> = ({ darkMode }) => {
                       title="Open Live Demo"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
-                      <span>Interactive Demo</span>
+                      <span></span>
                     </a>
                   )}
 
@@ -286,7 +311,7 @@ export const CaseStudies: React.FC<CaseStudiesProps> = ({ darkMode }) => {
                   href="#contact"
                   className="text-xs font-semibold text-slate-400 hover:text-white transition-colors"
                 >
-                  Deploy Similar →
+                  Discuss a Similar Problem →
                 </a>
               </div>
             </div>
